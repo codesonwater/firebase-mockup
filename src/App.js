@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './scenes/Home';
+import Login from './scenes/Login';
+import Signup from './scenes/Signup';
+import { useState } from 'react';
+
+
 
 function App() {
+ const [user, setUser] = useState()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h1>Jeremiah and Danielle's App!</h1>
+    <Routes>
+      <Route path="/" element= {user? <Home user={user} /> : <Login setuser={setUser}/>} />
+      <Route path="/login" element= {<Login setuser={setUser}/>}/>
+      <Route path="/signup" element= {<Signup setuser={setUser}/>} />
+    </Routes>
+    </>
   );
 }
 
